@@ -27,11 +27,11 @@
  * other configuration you may need to do for the newly deployed code.
  */
 $repos = array(
-	/*'examplerepo' => array(
+	'eec' => array(
 		'branch' => 'master',
 		'remote' => 'origin',
-		'path' => '/path/to/local/code/'
-	)*/
+		'path' => '/var/www/hosting/devtest.bgnd.com/'
+	)
 );
 
 /**
