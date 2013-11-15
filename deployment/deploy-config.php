@@ -27,10 +27,10 @@
  * other configuration you may need to do for the newly deployed code.
  */
 $repos = array(
-	'eec' => array(
+	'ecc' => array(
 		'branch' => 'master',
 		'remote' => 'origin',
-		'path' => '/var/www/hosting/devtest.bgnd.com/'
+		'path' => '/var/www/hosting/devtest.bgnd.com/ecc/'
 	)
 );
 
