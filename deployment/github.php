@@ -8,6 +8,15 @@ if( ! isset( $_POST['payload'] ) )
  */
 define( 'ACTIVE_DEPLOY_ENDPOINT', true );
 
+$here = dirname(__FILE__);
+$log_file = fopen($here.'/log.txt', 'a+');
+if($log_file !== FALSE)
+{
+    fwrite($log_file, print_r($_POST, TRUE));
+    fwrite($log_file, PHP_EOL.'==='.PHP_EOL.'==='.PHP_EOL);
+    fclose($log_file);
+}
+
 require_once 'deploy-config.php';
 
 /**
