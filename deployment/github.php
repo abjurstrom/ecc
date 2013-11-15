@@ -47,6 +47,20 @@ class GitHub_Deploy extends Deploy {
 			$data['commit'] = $commit;
 			parent::__construct( $name, $data );
 		}
+        else
+        {
+            $here     = dirname(__FILE__);
+            $log_file = fopen($here.'/log.txt', 'a');
+            if ($log_file !== FALSE)
+            {
+                $repos_r = print_r(parent::$repos, TRUE);
+                fwrite($log_file, PHP_EOL.'!!!'.PHP_EOL.'!!!'.PHP_EOL);
+                fwrite($log_file, 'Failed to catch a correct config in:'.PHP_EOL);
+                fwrite($log_file, $repos_r);
+                fwrite($log_file, PHP_EOL.'!!!'.PHP_EOL.'!!!'.PHP_EOL);
+                fclose($log_file);
+            }
+        }
 	}
 }
 // Starts the deploy attempt.
