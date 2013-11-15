@@ -173,6 +173,8 @@ abstract class Deploy {
 	*/
 	private function execute() {
 		try {
+            exec('whoami', $output);
+
 			// Make sure we're in the right directory
 			chdir( $this->_path );
 
@@ -183,14 +185,20 @@ abstract class Deploy {
 			exec( 'git pull ' . $this->_remote . ' ' . $this->_branch, $output );
 
 			// Secure the .git directory
-			echo exec( 'chmod -R og-rx .git' );
+			$output[] = exec( 'chmod -R og-rx .git' );
 
 			if ( is_callable( $this->_post_deploy ) )
+            {
 				call_user_func( $this->_post_deploy );
+            }
+            else
+            {
+                $output[] = '!!! is_callable failed on: '.$this->_post_deploy.' !!!';
+            }
 
 			$this->log( '[SHA: ' . $this->_commit . '] Deployment of ' . $this->_name . ' from branch ' . $this->_branch . ' successful' );
             $output_r = print_r($output, TRUE);
-            $this->log('++Output++'.$output_r.'--End Output--');
+            $this->log('++Output++'.PHP_EOL.$output_r.PHP_EOL.'--End Output--');
 		} catch ( Exception $e ) {
 			$this->log( $e, 'ERROR' );
 		}
