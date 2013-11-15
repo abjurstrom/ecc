@@ -1,3 +1,3 @@
 <?php
 
-echo date('Y-m-d h:i:s e');
+echo date('Y-m-d h:i:s e (O)');
