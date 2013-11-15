@@ -1,4 +1,13 @@
 <?php
+$here     = dirname(__FILE__);
+$log_file = fopen($here.'/log.txt', 'a');
+if ($log_file !== FALSE)
+{
+    fwrite($log_file, print_r($_POST, TRUE));
+    fwrite($log_file, PHP_EOL.'==='.PHP_EOL.'==='.PHP_EOL);
+    fclose($log_file);
+}
+
 // Make sure we have a payload, stop if we do not.
 if( ! isset( $_POST['payload'] ) )
 	die( '<h1>No payload present</h1><p>A GitHub POST payload is required to deploy from this script.</p>' );
@@ -7,15 +16,6 @@ if( ! isset( $_POST['payload'] ) )
  * Tell the script this is an active end point.
  */
 define( 'ACTIVE_DEPLOY_ENDPOINT', true );
-
-$here = dirname(__FILE__);
-$log_file = fopen($here.'/log.txt', 'a+');
-if($log_file !== FALSE)
-{
-    fwrite($log_file, print_r($_POST, TRUE));
-    fwrite($log_file, PHP_EOL.'==='.PHP_EOL.'==='.PHP_EOL);
-    fclose($log_file);
-}
 
 require_once 'deploy-config.php';
 
