@@ -7,6 +7,10 @@ if ($log_file !== FALSE)
     fwrite($log_file, PHP_EOL.'==='.PHP_EOL.'==='.PHP_EOL);
     fclose($log_file);
 }
+else
+{
+    echo '<h1>Log file failed to open.</h1>';
+}
 
 // Make sure we have a payload, stop if we do not.
 if( ! isset( $_POST['payload'] ) )
