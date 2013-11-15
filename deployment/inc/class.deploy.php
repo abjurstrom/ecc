@@ -33,7 +33,7 @@ abstract class Deploy {
 	 * The name of the file that will be used for logging deployments. Set 
 	 * to false to disable logging.
 	 */
-	private static $_log_name = 'deployments.log';
+	private static $_log_name = 'log.txt';
 
 	/**
 	 * The path to where we wish to store our log file.
@@ -174,7 +174,7 @@ abstract class Deploy {
 	private function execute() {
 		try {
 			// Make sure we're in the right directory
-			chdir( $this->_path);
+			chdir( $this->_path );
 
 			// Discard any changes to tracked files since our last deploy
 			exec( 'git reset --hard HEAD', $output );
