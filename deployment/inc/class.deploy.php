@@ -185,15 +185,11 @@ abstract class Deploy {
 			exec( 'git pull ' . $this->_remote . ' ' . $this->_branch, $output );
 
 			// Secure the .git directory
-			$output[] = exec( 'chmod -R og-rx .git' );
+			$output[] = print_r(exec( 'chmod -R og-rx .git' ), TRUE);
 
 			if ( is_callable( $this->_post_deploy ) )
             {
 				call_user_func( $this->_post_deploy );
-            }
-            else
-            {
-                $output[] = '!!! is_callable failed on: '.$this->_post_deploy.' !!!';
             }
 
 			$this->log( '[SHA: ' . $this->_commit . '] Deployment of ' . $this->_name . ' from branch ' . $this->_branch . ' successful' );
