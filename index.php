@@ -5,4 +5,4 @@ echo date('Y-m-d h:i:s e (O)').'<br/>';
 
 echo 'Your IP is:'.$_SERVER['REMOTE_ADDR'];
 
-echo '<h1>AND THIS ALL WORKS! WOO</h1>';
+echo '<h1>And back to testing.</h1>';
