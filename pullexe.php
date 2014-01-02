@@ -5,14 +5,17 @@
  * Date: 1/2/14
  * Time: 3:52 PM
  */
+require_once("NFSN/Exec.php");
+nfsn_exec_set_secret("G9o2K5476yTtCPfPqt7s3YIWBqEJqQtIlZjic");
 
 $output = array();
 $return_status = array();
 $output[] = getcwd();
 chdir('/home/public/gitest/ecc');
 $output[] = getcwd();
-exec('git reset --hard HEAD', $output, $return_status['reset']);
-exec('git pull https://github.com/abjurstrom/ecc.git master', $output, $return_status['pull']);
+
+$return_status['reset'] = nfsn_passthru('git reset --hard HEAD');
+$return_status['pull'] = nfsn_passthru('git pull https://github.com/abjurstrom/ecc.git master');
 
 echo '<pre>';
 print_r($output);
