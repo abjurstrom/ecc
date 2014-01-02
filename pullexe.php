@@ -12,8 +12,8 @@ $output[] = getcwd();
 chdir('/home/public/gitest/ecc');
 $output[] = getcwd();
 
-$return_status['reset'] = shell_exec('git reset --hard HEAD');
-$return_status['pull'] = shell_exec('git pull https://github.com/abjurstrom/ecc.git master');
+passthru('git reset --hard HEAD', $return_status['reset']);
+passthru('git pull https://github.com/abjurstrom/ecc.git master', $return_status['pull']);
 
 echo '<pre>';
 print_r($output);
