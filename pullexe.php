@@ -14,8 +14,8 @@ $output[] = getcwd();
 chdir('/home/public/gitest/ecc');
 $output[] = getcwd();
 
-$return_status['reset'] = nfsn_passthru('git reset --hard HEAD');
-$return_status['pull'] = nfsn_passthru('git pull https://github.com/abjurstrom/ecc.git master');
+$return_status['reset'] = nfsn_exec('git reset --hard HEAD');
+$return_status['pull'] = nfsn_exec('git pull https://github.com/abjurstrom/ecc.git master');
 
 echo '<pre>';
 print_r($output);
