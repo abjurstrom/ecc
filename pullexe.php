@@ -8,7 +8,9 @@
 
 $output = array();
 $return_status = array();
-
+$output[] = getcwd();
+chdir('/home/public/gitest/ecc');
+$output[] = getcwd();
 exec('git reset --hard HEAD', $output, $return_status['reset']);
 exec('git pull https://github.com/abjurstrom/ecc.git master', $output, $return_status['pull']);
 
